@@ -1,0 +1,44 @@
+This directory contains a proof of concept implementation of two-dimensional function space summation-by-parts operators (FSBP).
+The source is organized into the following files:
+	* bfs.jl:
+		- Holds the definitions of basis functions used in the examples.
+		- New basis functions can be added to play around.
+        * circOp.jl:
+                - A multidimensional SBP operator on a circular disk, exact for polynomials up to degree 3 was implemented in this file
+        * fcircOp.jl :
+                - The same domain and points as in circOp.jl were used as a basis for a MFSBP operator, exact for waves moving in direction $v$
+	* circtest.jl:
+		- Caries out simulations for the linear advection equation with the two operators above.
+	* FSBPcon2.jl:
+		- Nearly all routines that are needed to construct a two-dimensional FSBP operator can be included with this file.
+		- Namely, "makeFSBPmimeticB" can be used to construct a FSBP operator with a mimetic boundary operator, as defined 
+			in the publication, with a single quadrature for x and y surface integrals.
+		- makeFSBPb can be used to construct a FSBP operator with separate quadrature weights for the x and y direction.
+        * FSBPconSC.jl:
+                - Implements the stable construction of mimetic boundary operators
+        * mkpictures.jl:
+                - Carries out simulations for the linear advection and a steady state problem on triangular  blocks, produces graphs.
+        * mkconvana.jl:
+                - Carries out a convergence analysis for linear advection, produces pictures
+        * mkstconvana.jl:
+                - Carries out a convergence analysis for a steady state problem, produces plots
+	* pfs.jl:
+		- Functions used for plotting of the examples can be found in this file.
+	* ptgen.jl:
+                - Point insertion functions to enter points into a domain
+                - Halton and equidistributed points are supported
+        * steadyTriOp.jl:
+                - Constructs a MFSBP operator, exact for the steady state test, on a triangular block.
+        * structs.jl:
+                - Holds the definition of the needed structs. 
+                - Should be included in all other parts of the project
+        * triangSteadyTest.jl:
+                - implements a steady state problem using triangular blocks
+        * triangtest.jl:
+                - implements linear advection using triangular blocks
+        * triOp.jl:
+                - constructs a MFSBP operator on a triangular reference element, exact for waves in direction $v$.
+        * polytriOp.jl:
+                - constructs a polynomial SBP operator on a triangular reference element, exact for polynomials up to degree 3
+	* pocs.py:
+		- produces the figure 1 from the publication
